@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block booksbypublisher %}
+	<br>
+	<center><p><a href="{% url 'books:publisherdetailview' pk=publisher.id %}">Books by publisher: {{ publisher.name }}</a></p></center>
+	<hr>
+
+	{% for book in books %}
+	<ol>
+		<li><p>{{ book.title }}</p></li>
+	</ol>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block labelsList %}
+	
+	<br>
+	<center><p>Labels List</p></center>
+	<hr>
+
+	{% for label in labels %}
+	<ol>
+		<li><p><a href="{% url 'beats:beats' label.name %}">{{ label.name }}</a></p></li>
+	</ol>
+	{% endfor %}
+
+{% endblock %}

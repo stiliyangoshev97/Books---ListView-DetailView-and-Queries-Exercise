@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block beats_by_label %}
+	<br>
+	<center><p>Beats by label: {{ label.name }}</p></center>
+	<hr>
+
+	{% for beat in beats %}
+	<ol>
+		<li><p>{{ beat.title }}</p></li>
+	</ol>
+	{% endfor %}
+{% endblock %}

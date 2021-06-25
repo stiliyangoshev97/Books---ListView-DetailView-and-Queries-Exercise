@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+
+{% block index %}
+
+<p>I am the index</p>
+
+<a href="{% url 'books:authors_list' %}">List of authors</a>
+<a href="{% url 'books:create_book' %}">Create book</a>
+
+{% endblock %}
