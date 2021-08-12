@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block view_authors %}
+
+<center><div class="container">
+	<p><abbr title="View Authors">View</abbr></p>
+
+	{% for author in authors %}
+
+	<p>{{ author.name }}</p>
+
+	{% endfor %}
+	
+</div></center>
+{% endblock %}

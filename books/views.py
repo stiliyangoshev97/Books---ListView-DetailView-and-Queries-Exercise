@@ -6,9 +6,10 @@ from django.views.generic import ListView, DetailView
 
 from django.shortcuts import get_object_or_404
 
+from books.decorators import allowed_groups
+
 # Create your views here.
-
-
+# class cannot have decorators, they use mixin
 class AuthorCreateView(CreateView):
 	model = Author
 	fields = ['name']
@@ -38,17 +39,25 @@ class BookByPublisherView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		context['publisher'] = self.publisher
+		# Filtered books only by publisher name
 		context['books'] = Book.objects.filter(publisher = self.publisher)
 		return context
 
 class PublisherDetailView(DetailView):
 	model = Publisher
 
-	
-
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		return context
+
+
+@allowed_groups(['CRUD_Author'])
+def view_authors(request):
+	authors = Author.objects.all()
+
+	context = {'authors': authors}
+
+	return render(request, 'books/view_authors.html', context)
 
 
 
